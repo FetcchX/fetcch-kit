@@ -6,6 +6,8 @@ import { dts } from "rollup-plugin-dts";
 const packageJson = require("./package.json");
 import postcss from "rollup-plugin-postcss";
 import tailwindcss from "tailwindcss";
+import terser from "@rollup/plugin-terser";
+import peerDepsExternal from "rollup-plugin-peer-deps-external";
 
 const tailwindConfig = require("./tailwind.config.js");
 
@@ -26,6 +28,7 @@ export default [
       },
     ],
     plugins: [
+      peerDepsExternal(),
       postcss({
         config: {
           path: "./postcss.config.js",
@@ -41,6 +44,7 @@ export default [
       resolve(),
       commonjs(),
       typescript({ tsconfig: "./tsconfig.json" }),
+      terser(),
     ],
   },
   {
