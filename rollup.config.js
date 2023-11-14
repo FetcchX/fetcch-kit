@@ -2,7 +2,7 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
 import { dts } from "rollup-plugin-dts";
-import sucrase from '@rollup/plugin-sucrase';
+import css from "rollup-plugin-import-css";
 
 const packageJson = require("./package.json");
 import postcss from "rollup-plugin-postcss";
@@ -42,18 +42,20 @@ export default [
         },
         extract: true,
       }),
+      css(),
       resolve(),
       commonjs(),
-      typescript({ tsconfig: "./tsconfig.json" }),
+      typescript({ jsx: "react", tsconfig: "./tsconfig.json" }),
       terser(),
-      sucrase({
-        exclude: ['node_modules/**'],
-        transforms: ['typescript', 'jsx'],
-      }),
+      // sucrase({
+      //   exclude: ['node_modules/**'],
+      //   transforms: ['typescript', 'jsx'],
+        
+      // }),
     ],
   },
   {
-    input: "dist/esm/types/index.d.ts",
+    input: "dist/esm/index.d.ts",
     output: [{ file: "dist/index.d.ts", format: "esm" }],
     plugins: [dts()],
     external: [/\.css$/],

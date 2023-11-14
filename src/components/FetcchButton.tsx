@@ -4,7 +4,7 @@ import "../global.css";
 import * as Dialog from "@radix-ui/react-dialog";
 import FetcchModal from "./FetcchModal";
 
-interface FetcchButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface FetcchButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   requestId: string
   action: string
   name: string
