@@ -1,6 +1,6 @@
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
-import typescript from "@rollup/plugin-typescript";
+import sucrase from "@rollup/plugin-sucrase";
 import { dts } from "rollup-plugin-dts";
 import css from "rollup-plugin-import-css";
 
@@ -45,19 +45,18 @@ export default [
       css(),
       resolve(),
       commonjs(),
-      typescript({ jsx: "react", tsconfig: "./tsconfig.json" }),
+      // typescript({ jsx: "react", tsconfig: "./tsconfig.json" }),
       terser(),
-      // sucrase({
-      //   exclude: ['node_modules/**'],
-      //   transforms: ['typescript', 'jsx'],
-        
-      // }),
+      sucrase({
+        exclude: ['node_modules/**'],
+        transforms: ['typescript', 'jsx'],  
+      }),
     ],
   },
-  {
-    input: "dist/esm/index.d.ts",
-    output: [{ file: "dist/index.d.ts", format: "esm" }],
-    plugins: [dts()],
-    external: [/\.css$/],
-  },
+  // {
+  //   input: "dist/esm/index.d.ts",
+  //   output: [{ file: "dist/index.d.ts", format: "esm" }],
+  //   plugins: [dts()],
+  //   external: [/\.css$/],
+  // },
 ];
