@@ -92,7 +92,8 @@ export const FButton = (params: { id: string }) => {
 
 ![Untitled](https://github.com/FetcchX/fetcch-kit/assets/59167439/cfeb137b-7852-420f-81ac-ae4dff0cd0c7)
 
-![Untitled](https://github.com/FetcchX/fetcch-kit/assets/59167439/64811d43-2a02-4418-adcf-a30803eba3b1)
+<img src="https://github.com/FetcchX/fetcch-kit/assets/59167439/64811d43-2a02-4418-adcf-a30803eba3b1" width="500" height="700"/>
+
 
 ### **Contributing**
 
